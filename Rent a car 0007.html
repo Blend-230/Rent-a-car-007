@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rent A Car 007 - Fushë Kosovë</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #070707;
+      color: #fff;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    .page-section {
+      display: none;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.96), rgba(0,0,0,.82), rgba(0,0,0,.35)),
+        url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1800&auto=format&fit=crop") center/cover no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      right: -160px;
+      top: 130px;
+      width: 560px;
+      height: 560px;
+      border-radius: 50%;
+      background: rgba(239,68,68,.28);
+      filter: blur(90px);
+    }
+
+    nav {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+    }
+
+    .logo-img {
+      width: 120px;
+      height: 78px;
+      object-fit: contain;
+      background: #050505;
+      border-radius: 18px;
+      padding: 6px;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 0 35px rgba(239,68,68,.25);
+    }
+
+    .logo h2 {
+      font-size: 25px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .logo p {
+      font-size: 12px;
+      color: #bcbcbc;
+      margin-top: 5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      color: #ddd;
+      font-weight: 700;
+      align-items: center;
+    }
+
+    .nav-links a {
+      cursor: pointer;
+      transition: .25s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active-link {
+      color: #ef4444;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      background: #ef3232;
+      color: white;
+      padding: 14px 24px;
+      font-weight: 900;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      transition: .25s;
+      box-shadow: 0 16px 40px rgba(239,50,50,.26);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      background: #ff4545;
+    }
+
+    .btn-dark {
+      background: #171717;
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      padding: 100px 0 80px;
+    }
+
+    .badge {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.07);
+      padding: 11px 17px;
+      border-radius: 999px;
+      color: #eee;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(43px, 7vw, 88px);
+      line-height: .96;
+      font-weight: 900;
+      letter-spacing: -3px;
+    }
+
+    .hero h1 span,
+    .red {
+      color: #ef4444;
+    }
+
+    .hero-text {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #d3d3d3;
+      margin: 26px 0 34px;
+      max-width: 650px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .stats {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 52px;
+    }
+
+    .stat {
+      min-width: 150px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .stat h3 {
+      font-size: 28px;
+      color: #ef4444;
+    }
+
+    .stat p {
+      font-size: 13px;
+      color: #cfcfcf;
+      margin-top: 4px;
+    }
+
+    section {
+      padding: 86px 0;
+      min-height: 80vh;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .title p {
+      color: #ef4444;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    .title h2 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      margin-top: 10px;
+    }
+
+    .services {
+      background: #0d0d0d;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, #171717, #0b0b0b);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 28px;
+      padding: 30px;
+      transition: .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(239,68,68,.45);
+    }
+
+    .icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      background: rgba(239,68,68,.15);
+      display: grid;
+      place-items: center;
+      color: #ef4444;
+      font-size: 27px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #bdbdbd;
+      line-height: 1.8;
+    }
+
+    .cars {
+      background: #070707;
+    }
+
+    .car-card {
+      background: #111;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 30px;
+      overflow: hidden;
+      transition: .25s;
+    }
+
+    .car-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 70px rgba(0,0,0,.45);
+    }
+
+    .car-image {
+      height: 235px;
+      background: linear-gradient(135deg, #222, #111);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .car-image::before {
+      content: "";
+      position: absolute;
+      bottom: -80px;
+      left: -40px;
+      width: 120%;
+      height: 170px;
+      background: #ef3232;
+      transform: skewY(-9deg);
+    }
+
+    .car-emoji {
+      position: relative;
+      z-index: 2;
+      font-size: 86px;
+      filter: drop-shadow(0 18px 20px rgba(0,0,0,.35));
+    }
+
+    .car-info {
+      padding: 25px;
+    }
+
+    .car-info h3 {
+      font-size: 24px;
+    }
+
+    .car-info p {
+      color: #bbb;
+      margin: 8px 0 16px;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .tag {
+      font-size: 12px;
+      color: #ffc5c5;
+      background: rgba(239,68,68,.14);
+      border: 1px solid rgba(239,68,68,.25);
+      padding: 7px 10px;
+      border-radius: 999px;
+    }
+
+    .price {
+      display: inline-block;
+      background: #ef3232;
+      color: white;
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .contact {
+      background: #0d0d0d;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .contact-info,
+    .quick-form {
+      background: #151515;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 30px;
+      padding: 34px;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      color: #dedede;
+    }
+
+    .contact-row span:first-child {
+      color: #ef4444;
+      font-size: 24px;
+    }
+
+    .insta-link {
+      color: #ef4444;
+      font-weight: 900;
+      transition: .25s;
+    }
+
+    .insta-link:hover {
+      color: #ff7777;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 15px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: #0a0a0a;
+      color: white;
+      outline: none;
+      margin-bottom: 14px;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.82);
+      z-index: 50;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-box {
+      width: min(560px, 100%);
+      background: #121212;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 30px;
+      padding: 28px;
+      box-shadow: 0 30px 100px rgba(0,0,0,.7);
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      right: 20px;
+      top: 18px;
+      background: #242424;
+      border: 1px solid rgba(255,255,255,.12);
+      color: white;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .modal-box h2 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .modal-box p {
+      color: #bcbcbc;
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    .two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .success {
+      display: none;
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(34,197,94,.12);
+      border: 1px solid rgba(34,197,94,.28);
+      color: #bbf7d0;
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 30px 0;
+      background: #050505;
+      color: #999;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .nav-links a {
+        background: rgba(255,255,255,.08);
+        border: 1px solid rgba(255,255,255,.1);
+        padding: 9px 13px;
+        border-radius: 999px;
+        font-size: 14px;
+      }
+
+      .logo-img {
+        width: 95px;
+        height: 65px;
+      }
+
+      .logo h2 {
+        font-size: 20px;
+      }
+
+      .logo p {
+        font-size: 10px;
+      }
+
+      .grid-3,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content {
+        padding-top: 60px;
+      }
+
+      .hero h1 {
+        letter-spacing: -1.5px;
+      }
+
+      .two {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="hero page-section active" id="homePage">
+    <div class="container">
+      <nav>
+        <a class="logo" onclick="showPage('homePage')">
+          <img src="007 FOTO.jpg" alt="Auto Rent 007 Logo" class="logo-img">
+          <div>
+            <h2>Rent A Car 007</h2>
+            <p>Your Ride • Your Rules • Your Speed</p>
+          </div>
+        </a>
+
+        <div class="nav-links">
+          <a id="homeLink" class="active-link" onclick="showPage('homePage')">Home</a>
+          <a id="servicesLink" onclick="showPage('servicesPage')">Shërbimet</a>
+          <a id="carsLink" onclick="showPage('carsPage')">Makinat</a>
+          <a id="contactLink" onclick="showPage('contactPage')">Kontakti</a>
+        </div>
+
+        <button class="btn" onclick="openBooking('Rezervim i shpejtë')">
+          Rezervo tani
+        </button>
+      </nav>
+
+      <div class="hero-content">
+        <div class="badge">⚡ Stil, fuqi dhe kontroll</div>
+
+        <h1>Rent A Car <span>007</span><br>Gati për rrugë.</h1>
+
+        <p class="hero-text">
+          Qira veturash në Fushë Kosovë me shërbim profesional, çmime konkurruese dhe rezervim të shpejtë.
+          Zgjidh makinën, lëri të dhënat dhe ekipi të kontakton.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="btn" onclick="openBooking('Rezervim i shpejtë')">
+            📋 Plotëso të dhënat
+          </button>
+
+          <a class="btn btn-dark" href="tel:+38344181803">
+            📞 044 181 803
+          </a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <h3>24/7</h3>
+            <p>Rezervime</p>
+          </div>
+
+          <div class="stat">
+            <h3>007</h3>
+            <p>Rent a Car</p>
+          </div>
+
+          <div class="stat">
+            <h3>100%</h3>
+            <p>Shërbim profesional</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="services page-section" id="servicesPage">
+    <div class="container">
+      <nav>
+        <a class="logo" onclick="showPage('homePage')">
+          <img src="007 FOTO.jpg" alt="Auto Rent 007 Logo" class="logo-img">
+          <div>
+            <h2>Rent A Car 007</h2>
+            <p>Your Ride • Your Rules • Your Speed</p>
+          </div>
+        </a>
+
+        <div class="nav-links">
+          <a onclick="showPage('homePage')">Home</a>
+          <a class="active-link" onclick="showPage('servicesPage')">Shërbimet</a>
+          <a onclick="showPage('carsPage')">Makinat</a>
+          <a onclick="showPage('contactPage')">Kontakti</a>
+        </div>
+
+        <button class="btn" onclick="openBooking('Rezervim i shpejtë')">Rezervo tani</button>
+      </nav>
+
+      <div class="title">
+        <p>Shërbimet</p>
+        <h2>Pse me zgjedh Rent A Car 007?</h2>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>Rezervim i shpejtë</h3>
+          <p>Klienti e plotëson formën me të dhënat kryesore dhe ju e kontaktoni për konfirmim.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🚘</div>
+          <h3>Makina të pastra</h3>
+          <p>Makina të pastruara, të kontrolluara dhe të gatshme për rrugë.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">💶</div>
+          <h3>Çmime konkurruese</h3>
+          <p>Oferta fleksibile për qira ditore, javore ose mujore sipas marrëveshjes.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">📍</div>
+          <h3>Lokacion në Fushë Kosovë</h3>
+          <p>Shërbim i shpejtë për klientët në Fushë Kosovë dhe rrethinë.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">📞</div>
+          <h3>Kontakt direkt</h3>
+          <p>Rezervim i lehtë përmes telefonit, WhatsApp ose Instagram.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">✅</div>
+          <h3>Shërbim profesional</h3>
+          <p>Komunikim i qartë, korrekt dhe i shpejtë me klientin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cars page-section" id="carsPage">
+    <div class="container">
+      <nav>
+        <a class="logo" onclick="showPage('homePage')">
+          <img src="007 FOTO.jpg" alt="Auto Rent 007 Logo" class="logo-img">
+          <div>
+            <h2>Rent A Car 007</h2>
+            <p>Your Ride • Your Rules • Your Speed</p>
+          </div>
+        </a>
+
+        <div class="nav-links">
+          <a onclick="showPage('homePage')">Home</a>
+          <a onclick="showPage('servicesPage')">Shërbimet</a>
+          <a class="active-link" onclick="showPage('carsPage')">Makinat</a>
+          <a onclick="showPage('contactPage')">Kontakti</a>
+        </div>
+
+        <button class="btn" onclick="openBooking('Rezervim i shpejtë')">Rezervo tani</button>
+      </nav>
+
+      <div class="title">
+        <p>Flota</p>
+        <h2>Makinat që i ka biznesi</h2>
+      </div>
+
+      <div class="grid-3">
+        <div class="car-card">
+          <div class="car-image"><div class="car-emoji">🚗</div></div>
+          <div class="car-info">
+            <h3>VW Golf 7 i bardhë</h3>
+            <p>Ekonomik, komod dhe shumë i përshtatshëm për qytet.</p>
+            <div class="tags">
+              <span class="tag">Golf 7</span>
+              <span class="tag">5 ulëse</span>
+              <span class="tag">Ekonomik</span>
+            </div>
+            <span class="price">Çmimi sipas marrëveshjes</span><br>
+            <button class="btn" onclick="openBooking('VW Golf 7 i bardhë')">Rezervo tani</button>
+          </div>
+        </div>
+
+        <div class="car-card">
+          <div class="car-image"><div class="car-emoji">🚙</div></div>
+          <div class="car-info">
+            <h3>VW Golf 7 i hirtë</h3>
+            <p>Makina praktike për udhëtime ditore dhe përdorim familjar.</p>
+            <div class="tags">
+              <span class="tag">Golf 7</span>
+              <span class="tag">Komod</span>
+              <span class="tag">Praktik</span>
+            </div>
+            <span class="price">Çmimi sipas marrëveshjes</span><br>
+            <button class="btn" onclick="openBooking('VW Golf 7 i hirtë')">Rezervo tani</button>
+          </div>
+        </div>
+
+        <div class="car-card">
+          <div class="car-image"><div class="car-emoji">🚘</div></div>
+          <div class="car-info">
+            <h3>VW Passat / Jetta</h3>
+            <p>Sedan me hapësirë, stil dhe rehati për rrugë më të gjata.</p>
+            <div class="tags">
+              <span class="tag">Sedan</span>
+              <span class="tag">Familjar</span>
+              <span class="tag">Komfort</span>
+            </div>
+            <span class="price">Çmimi sipas marrëveshjes</span><br>
+            <button class="btn" onclick="openBooking('VW Passat / Jetta')">Rezervo tani</button>
+          </div>
+        </div>
+
+        <div class="car-card">
+          <div class="car-image"><div class="car-emoji">🚗</div></div>
+          <div class="car-info">
+            <h3>VW Golf i kaltër</h3>
+            <p>Makina e përshtatshme për klientë që duan vozitje të lehtë dhe kursim.</p>
+            <div class="tags">
+              <span class="tag">Golf</span>
+              <span class="tag">Kursim</span>
+              <span class="tag">Qytet</span>
+            </div>
+            <span class="price">Çmimi sipas marrëveshjes</span><br>
+            <button class="btn" onclick="openBooking('VW Golf i kaltër')">Rezervo tani</button>
+          </div>
+        </div>
+
+        <div class="car-card">
+          <div class="car-image"><div class="car-emoji">🚙</div></div>
+          <div class="car-info">
+            <h3>VW Golf i zi / hirtë</h3>
+            <p>Model elegant dhe i mirë për përdorim të përditshëm.</p>
+            <div class="tags">
+              <span class="tag">Golf</span>
+              <span class="tag">Elegant</span>
+              <span class="tag">5 ulëse</span>
+            </div>
+            <span class="price">Çmimi sipas marrëveshjes</span><br>
+            <button class="btn" onclick="openBooking('VW Golf i zi / hirtë')">Rezervo tani</button>
+          </div>
+        </div>
+
+        <div class="car-card">
+          <div class="car-image"><div class="car-emoji">🚘</div></div>
+          <div class="car-info">
+            <h3>VW Sedan i argjendtë</h3>
+            <p>Vetura serioze për udhëtime, punë dhe familje.</p>
+            <div class="tags">
+              <span class="tag">Sedan</span>
+              <span class="tag">Komod</span>
+              <span class="tag">Premium look</span>
+            </div>
+            <span class="price">Çmimi sipas marrëveshjes</span><br>
+            <button class="btn" onclick="openBooking('VW Sedan i argjendtë')">Rezervo tani</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact page-section" id="contactPage">
+    <div class="container">
+      <nav>
+        <a class="logo" onclick="showPage('homePage')">
+          <img src="007 FOTO.jpg" alt="Auto Rent 007 Logo" class="logo-img">
+          <div>
+            <h2>Rent A Car 007</h2>
+            <p>Your Ride • Your Rules • Your Speed</p>
+          </div>
+        </a>
+
+        <div class="nav-links">
+          <a onclick="showPage('homePage')">Home</a>
+          <a onclick="showPage('servicesPage')">Shërbimet</a>
+          <a onclick="showPage('carsPage')">Makinat</a>
+          <a class="active-link" onclick="showPage('contactPage')">Kontakti</a>
+        </div>
+
+        <button class="btn" onclick="openBooking('Rezervim i shpejtë')">Rezervo tani</button>
+      </nav>
+
+      <div class="title">
+        <p>Kontakti</p>
+        <h2>Na kontakto</h2>
+      </div>
+
+      <div class="contact-box">
+        <div class="contact-info">
+          <h3 style="font-size:28px;margin-bottom:18px">Rent A Car 007</h3>
+
+          <div class="contact-row">
+            <span>📞</span>
+            <div><a href="tel:+38344181803">044 181 803</a></div>
+          </div>
+
+          <div class="contact-row">
+            <span>💬</span>
+            <div><a href="https://wa.me/38344181803" target="_blank">+383 44 181 803</a></div>
+          </div>
+
+          <div class="contact-row">
+            <span>📸</span>
+            <div>
+              <a class="insta-link" href="https://www.instagram.com/autorent_007/" target="_blank">
+                @autorent_007
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <span>📍</span>
+            <div>Fushë Kosovë, Kosovo</div>
+          </div>
+
+          <div class="contact-row">
+            <span>🕒</span>
+            <div>Gjithmonë hapur</div>
+          </div>
+        </div>
+
+        <div class="quick-form">
+          <h3 style="font-size:28px;margin-bottom:18px">Rezervim i shpejtë</h3>
+          <p style="color:#bcbcbc;line-height:1.7;margin-bottom:18px">
+            Kliko poshtë dhe plotëso të dhënat kryesore të klientit.
+          </p>
+
+          <button class="btn" style="width:100%" onclick="openBooking('Rezervim i shpejtë')">
+            📋 Hap formën e rezervimit
+          </button>
+
+          <a class="btn btn-dark" style="width:100%;margin-top:12px" href="https://www.instagram.com/autorent_007/" target="_blank">
+            📸 Hape Instagramin
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal" id="bookingModal">
+    <div class="modal-box">
+      <button class="close" onclick="closeBooking()">×</button>
+
+      <h2>Rezervo makinën</h2>
+      <p>
+        Plotëso të dhënat kryesore. Pas plotësimit, hapet WhatsApp me mesazhin gati për dërgim.
+      </p>
+
+      <form id="bookingForm">
+        <input type="text" id="name" placeholder="Emri dhe mbiemri" required>
+        <input type="tel" id="phone" placeholder="Numri i telefonit" required>
+
+        <select id="car" required>
+          <option value="">Zgjedh makinën</option>
+          <option>VW Golf 7 i bardhë</option>
+          <option>VW Golf 7 i hirtë</option>
+          <option>VW Passat / Jetta</option>
+          <option>VW Golf i kaltër</option>
+          <option>VW Golf i zi / hirtë</option>
+          <option>VW Sedan i argjendtë</option>
+          <option>Rezervim i shpejtë</option>
+        </select>
+
+        <div class="two">
+          <input type="date" id="pickup" required>
+          <input type="date" id="returnDate" required>
+        </div>
+
+        <select id="delivery">
+          <option>Do ta marr në lokacion</option>
+          <option>Kam nevojë me ma sjell makinën</option>
+        </select>
+
+        <textarea id="message" placeholder="Mesazh shtesë, ora, lokacioni, kërkesa..."></textarea>
+
+        <button class="btn" type="submit" style="width:100%">
+          📨 Dërgo rezervimin në WhatsApp
+        </button>
+
+        <div class="success" id="successBox">
+          Të dhënat u përgatitën. Do të hapet WhatsApp për dërgim te Rent A Car 007.
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      © 2026 Rent A Car 007 • Your Ride, Your Rules, Your Speed
+    </div>
+  </footer>
+
+  <script>
+    function showPage(pageId) {
+      const pages = document.querySelectorAll(".page-section");
+
+      pages.forEach(function(page) {
+        page.classList.remove("active");
+      });
+
+      document.getElementById(pageId).classList.add("active");
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+    function openBooking(carName) {
+      document.getElementById("bookingModal").classList.add("active");
+
+      const carSelect = document.getElementById("car");
+
+      for (let i = 0; i < carSelect.options.length; i++) {
+        if (carSelect.options[i].text === carName) {
+          carSelect.selectedIndex = i;
+          break;
+        }
+      }
+
+      if (carName === "Rezervim i shpejtë") {
+        carSelect.value = "Rezervim i shpejtë";
+      }
+    }
+
+    function closeBooking() {
+      document.getElementById("bookingModal").classList.remove("active");
+    }
+
+    document.getElementById("bookingModal").addEventListener("click", function(e) {
+      if (e.target.id === "bookingModal") {
+        closeBooking();
+      }
+    });
+
+    document.getElementById("bookingForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const car = document.getElementById("car").value;
+      const pickup = document.getElementById("pickup").value;
+      const returnDate = document.getElementById("returnDate").value;
+      const delivery = document.getElementById("delivery").value;
+      const message = document.getElementById("message").value;
+
+      const text =
+        "Pershendetje Rent A Car 007,%0A%0A" +
+        "Dua te bej rezervim:%0A" +
+        "Emri: " + encodeURIComponent(name) + "%0A" +
+        "Telefoni: " + encodeURIComponent(phone) + "%0A" +
+        "Makina: " + encodeURIComponent(car) + "%0A" +
+        "Data e marrjes: " + encodeURIComponent(pickup) + "%0A" +
+        "Data e kthimit: " + encodeURIComponent(returnDate) + "%0A" +
+        "Menyra: " + encodeURIComponent(delivery) + "%0A" +
+        "Mesazh: " + encodeURIComponent(message) + "%0A%0A" +
+        "Faleminderit.";
+
+      document.getElementById("successBox").style.display = "block";
+
+      window.open("https://wa.me/38344181803?text=" + text, "_blank");
+    });
+  </script>
+</body>
+</html>
