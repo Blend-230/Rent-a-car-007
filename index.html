@@ -503,6 +503,14 @@
       line-height: 1.6;
     }
 
+
+    .platform-note {
+      color: #bcbcbc;
+      font-size: 13px;
+      margin: -4px 0 14px;
+      line-height: 1.5;
+    }
+
     footer {
       padding: 30px 0;
       background: #050505;
@@ -898,7 +906,7 @@
 
       <h2>Rezervo makinën</h2>
       <p>
-        Plotëso të dhënat kryesore. Pas plotësimit, hapet WhatsApp me mesazhin gati për dërgim.
+        Plotëso të dhënat kryesore. Zgjedh ku dëshiron me e dërgu rezervimin: WhatsApp, Viber, Messenger ose Instagram.
       </p>
 
       <form id="bookingForm">
@@ -916,6 +924,16 @@
           <option>Rezervim i shpejtë</option>
         </select>
 
+        <select id="sendTo" required>
+          <option value="whatsapp">Dërgo në WhatsApp</option>
+          <option value="viber">Dërgo në Viber</option>
+          <option value="messenger">Dërgo në Messenger / Facebook</option>
+          <option value="instagram">Dërgo në Instagram</option>
+        </select>
+        <div class="platform-note">
+          Te Instagram/Messenger/Viber mesazhi kopjohet automatikisht, pastaj vetëm bëje Paste në chat dhe dërgoje.
+        </div>
+
         <div class="two">
           <input type="date" id="pickup" required>
           <input type="date" id="returnDate" required>
@@ -929,11 +947,11 @@
         <textarea id="message" placeholder="Mesazh shtesë, ora, lokacioni, kërkesa..."></textarea>
 
         <button class="btn" type="submit" style="width:100%">
-          📨 Dërgo rezervimin në WhatsApp
+          📨 Dërgo rezervimin
         </button>
 
         <div class="success" id="successBox">
-          Të dhënat u përgatitën. Do të hapet WhatsApp për dërgim te Rent A Car 007.
+          Të dhënat u përgatitën. Po hapet aplikacioni i zgjedhur.
         </div>
       </form>
     </div>
@@ -998,22 +1016,50 @@
       const returnDate = document.getElementById("returnDate").value;
       const delivery = document.getElementById("delivery").value;
       const message = document.getElementById("message").value;
+      const sendTo = document.getElementById("sendTo").value;
+      const successBox = document.getElementById("successBox");
 
-      const text =
-        "Pershendetje Rent A Car 007,%0A%0A" +
-        "Dua te bej rezervim:%0A" +
-        "Emri: " + encodeURIComponent(name) + "%0A" +
-        "Telefoni: " + encodeURIComponent(phone) + "%0A" +
-        "Makina: " + encodeURIComponent(car) + "%0A" +
-        "Data e marrjes: " + encodeURIComponent(pickup) + "%0A" +
-        "Data e kthimit: " + encodeURIComponent(returnDate) + "%0A" +
-        "Menyra: " + encodeURIComponent(delivery) + "%0A" +
-        "Mesazh: " + encodeURIComponent(message) + "%0A%0A" +
+      const plainText =
+        "Pershendetje Rent A Car 007,\n\n" +
+        "Dua te bej rezervim:\n" +
+        "Emri: " + name + "\n" +
+        "Telefoni: " + phone + "\n" +
+        "Makina: " + car + "\n" +
+        "Data e marrjes: " + pickup + "\n" +
+        "Data e kthimit: " + returnDate + "\n" +
+        "Menyra: " + delivery + "\n" +
+        "Mesazh: " + message + "\n\n" +
         "Faleminderit.";
 
-      document.getElementById("successBox").style.display = "block";
+      const encodedText = encodeURIComponent(plainText);
 
-      window.open("https://wa.me/38344181803?text=" + text, "_blank");
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(plainText).catch(function() {});
+      }
+
+      let url = "";
+      let platformName = "";
+
+      if (sendTo === "whatsapp") {
+        platformName = "WhatsApp";
+        url = "https://wa.me/38344181803?text=" + encodedText;
+      } else if (sendTo === "viber") {
+        platformName = "Viber";
+        url = "viber://chat?number=%2B38344181803";
+      } else if (sendTo === "messenger") {
+        platformName = "Messenger / Facebook";
+        url = "https://m.me/autorent_007";
+      } else if (sendTo === "instagram") {
+        platformName = "Instagram";
+        url = "https://ig.me/m/autorent_007";
+      }
+
+      successBox.style.display = "block";
+      successBox.innerHTML =
+        "Rezervimi u përgatit për " + platformName + ".<br>" +
+        "Mesazhi është kopjuar automatikisht. Nëse nuk shfaqet në chat, bëje Paste dhe dërgoje.";
+
+      window.open(url, "_blank");
     });
   </script>
 </body>
