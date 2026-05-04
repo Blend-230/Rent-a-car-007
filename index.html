@@ -372,6 +372,19 @@
       overflow: hidden;
     }
 
+    .car-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      position: relative;
+      z-index: 2;
+    }
+
+    .car-image.has-photo::before {
+      display: none;
+    }
+
     .car-image::before {
       content: "";
       position: absolute;
@@ -725,7 +738,7 @@
     <div class="container">
       <nav>
         <a class="logo" onclick="showPage('homePage')">
-          <img src="007 FOTO.jpg" alt="Auto Rent 007 Logo" class="logo-img">
+          <img src="007 foto.jpg" alt="Auto Rent 007 Logo" class="logo-img">
           <div>
             <h2>Rent A Car 007</h2>
             <p>Your Ride • Your Rules • Your Speed</p>
@@ -788,7 +801,7 @@
     <div class="container">
       <nav>
         <a class="logo" onclick="showPage('homePage')">
-          <img src="007 FOTO.jpg" alt="Auto Rent 007 Logo" class="logo-img">
+          <img src="007 foto.jpg" alt="Auto Rent 007 Logo" class="logo-img">
           <div>
             <h2>Rent A Car 007</h2>
             <p>Your Ride • Your Rules • Your Speed</p>
@@ -854,7 +867,7 @@
     <div class="container">
       <nav>
         <a class="logo" onclick="showPage('homePage')">
-          <img src="007 FOTO.jpg" alt="Auto Rent 007 Logo" class="logo-img">
+          <img src="007 foto.jpg" alt="Auto Rent 007 Logo" class="logo-img">
           <div>
             <h2>Rent A Car 007</h2>
             <p>Your Ride • Your Rules • Your Speed</p>
@@ -876,96 +889,8 @@
         <h2>Makinat që i ka biznesi</h2>
       </div>
 
-      <div class="grid-3">
-        <div class="car-card">
-          <div class="car-image"><div class="car-emoji">🚗</div></div>
-          <div class="car-info">
-            <h3>VW Golf 7 i bardhë</h3>
-            <p>Ekonomik, komod dhe shumë i përshtatshëm për qytet.</p>
-            <div class="tags">
-              <span class="tag">Golf 7</span>
-              <span class="tag">5 ulëse</span>
-              <span class="tag">Ekonomik</span>
-            </div>
-            <span class="price">Çmimi sipas marrëveshjes</span><br>
-            <button class="btn" onclick="openBooking('VW Golf 7 i bardhë')">Rezervo tani</button>
-          </div>
-        </div>
-
-        <div class="car-card">
-          <div class="car-image"><div class="car-emoji">🚙</div></div>
-          <div class="car-info">
-            <h3>VW Golf 7 i hirtë</h3>
-            <p>Makina praktike për udhëtime ditore dhe përdorim familjar.</p>
-            <div class="tags">
-              <span class="tag">Golf 7</span>
-              <span class="tag">Komod</span>
-              <span class="tag">Praktik</span>
-            </div>
-            <span class="price">Çmimi sipas marrëveshjes</span><br>
-            <button class="btn" onclick="openBooking('VW Golf 7 i hirtë')">Rezervo tani</button>
-          </div>
-        </div>
-
-        <div class="car-card">
-          <div class="car-image"><div class="car-emoji">🚘</div></div>
-          <div class="car-info">
-            <h3>VW Passat / Jetta</h3>
-            <p>Sedan me hapësirë, stil dhe rehati për rrugë më të gjata.</p>
-            <div class="tags">
-              <span class="tag">Sedan</span>
-              <span class="tag">Familjar</span>
-              <span class="tag">Komfort</span>
-            </div>
-            <span class="price">Çmimi sipas marrëveshjes</span><br>
-            <button class="btn" onclick="openBooking('VW Passat / Jetta')">Rezervo tani</button>
-          </div>
-        </div>
-
-        <div class="car-card">
-          <div class="car-image"><div class="car-emoji">🚗</div></div>
-          <div class="car-info">
-            <h3>VW Golf i kaltër</h3>
-            <p>Makina e përshtatshme për klientë që duan vozitje të lehtë dhe kursim.</p>
-            <div class="tags">
-              <span class="tag">Golf</span>
-              <span class="tag">Kursim</span>
-              <span class="tag">Qytet</span>
-            </div>
-            <span class="price">Çmimi sipas marrëveshjes</span><br>
-            <button class="btn" onclick="openBooking('VW Golf i kaltër')">Rezervo tani</button>
-          </div>
-        </div>
-
-        <div class="car-card">
-          <div class="car-image"><div class="car-emoji">🚙</div></div>
-          <div class="car-info">
-            <h3>VW Golf i zi / hirtë</h3>
-            <p>Model elegant dhe i mirë për përdorim të përditshëm.</p>
-            <div class="tags">
-              <span class="tag">Golf</span>
-              <span class="tag">Elegant</span>
-              <span class="tag">5 ulëse</span>
-            </div>
-            <span class="price">Çmimi sipas marrëveshjes</span><br>
-            <button class="btn" onclick="openBooking('VW Golf i zi / hirtë')">Rezervo tani</button>
-          </div>
-        </div>
-
-        <div class="car-card">
-          <div class="car-image"><div class="car-emoji">🚘</div></div>
-          <div class="car-info">
-            <h3>VW Sedan i argjendtë</h3>
-            <p>Vetura serioze për udhëtime, punë dhe familje.</p>
-            <div class="tags">
-              <span class="tag">Sedan</span>
-              <span class="tag">Komod</span>
-              <span class="tag">Premium look</span>
-            </div>
-            <span class="price">Çmimi sipas marrëveshjes</span><br>
-            <button class="btn" onclick="openBooking('VW Sedan i argjendtë')">Rezervo tani</button>
-          </div>
-        </div>
+      <div class="grid-3" id="carsGrid">
+        <!-- Makinat shfaqen automatikisht nga Supabase. Nëse nuk lidhet Supabase, shfaqen këto poshtë. -->
       </div>
     </div>
   </section>
@@ -974,7 +899,7 @@
     <div class="container">
       <nav>
         <a class="logo" onclick="showPage('homePage')">
-          <img src="007 FOTO.jpg" alt="Auto Rent 007 Logo" class="logo-img">
+          <img src="007 foto.jpg" alt="Auto Rent 007 Logo" class="logo-img">
           <div>
             <h2>Rent A Car 007</h2>
             <p>Your Ride • Your Rules • Your Speed</p>
@@ -1213,6 +1138,136 @@
 
       window.open(url, "_blank");
     });
+
+
+    // ===== SUPABASE BACKEND PËR MAKINA =====
+    // Project URL është ky i joti. Te SUPABASE_KEY vendose Publishable key të plotë nga Supabase.
+    const SUPABASE_URL = "https://apgiwidaifdbuapxyyfh.supabase.co";
+    const SUPABASE_KEY = "VENDOSE_PUBLISHABLE_KEY_KETU";
+
+    const defaultCars = [
+      {
+        name: "VW Golf 7 i bardhë",
+        year: "2014/2015",
+        transmission: "Automatik DSG",
+        fuel: "Naftë",
+        seats: 5,
+        price: "Çmimi sipas marrëveshjes",
+        description: "Golf 7 i bardhë, ekonomik, komod dhe shumë i përshtatshëm për qytet dhe rrugë të gjata.",
+        image_url: "images/golf-white-1.jpg"
+      },
+      {
+        name: "VW Golf 7 i hirtë",
+        year: "2014/2015",
+        transmission: "Automatik DSG",
+        fuel: "Naftë",
+        seats: 5,
+        price: "Çmimi sipas marrëveshjes",
+        description: "Makina praktike për udhëtime ditore dhe përdorim familjar.",
+        image_url: "images/golf-gray-1.jpg"
+      },
+      {
+        name: "VW Passat / Jetta",
+        year: "2015",
+        transmission: "Automatik",
+        fuel: "Naftë",
+        seats: 5,
+        price: "Çmimi sipas marrëveshjes",
+        description: "Sedan me hapësirë, stil dhe rehati për rrugë më të gjata.",
+        image_url: "images/jetta-day-1.jpg"
+      },
+      {
+        name: "VW Jetta argjendtë",
+        year: "2015",
+        transmission: "Automatik",
+        fuel: "Naftë",
+        seats: 5,
+        price: "Çmimi sipas marrëveshjes",
+        description: "Vetura serioze për udhëtime, punë dhe familje.",
+        image_url: "images/jetta-silver-1.jpg"
+      }
+    ];
+
+    function safeText(value, fallback = "") {
+      return value === null || value === undefined || value === "" ? fallback : String(value);
+    }
+
+    function carCard(car) {
+      const name = safeText(car.name, "Vetura");
+      const year = safeText(car.year, "—");
+      const transmission = safeText(car.transmission, "—");
+      const fuel = safeText(car.fuel, "—");
+      const seats = safeText(car.seats, "—");
+      const price = safeText(car.price, "Çmimi sipas marrëveshjes");
+      const description = safeText(car.description, "Vetura në dispozicion për qira.");
+      const img = safeText(car.image_url, "");
+
+      return `
+        <div class="car-card">
+          <div class="car-image ${img ? "has-photo" : ""}">
+            ${img ? `<img src="${img}" alt="${name} për qira te Rent A Car 007" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.remove('has-photo'); this.parentElement.innerHTML='<div class=&quot;car-emoji&quot;>🚗</div>';">` : `<div class="car-emoji">🚗</div>`}
+          </div>
+          <div class="car-info">
+            <h3>${name}</h3>
+            <p>${description}</p>
+            <div class="tags">
+              <span class="tag">${year}</span>
+              <span class="tag">${transmission}</span>
+              <span class="tag">${fuel}</span>
+              <span class="tag">${seats} ulëse</span>
+            </div>
+            <span class="price">${price}</span><br>
+            <button class="btn" onclick="openBooking('${name.replace(/'/g, "\\'")}')">Rezervo tani</button>
+          </div>
+        </div>`;
+    }
+
+    function renderCars(cars) {
+      const grid = document.getElementById("carsGrid");
+      if (!grid) return;
+      grid.innerHTML = cars.map(carCard).join("");
+      updateCarSelect(cars);
+    }
+
+    function updateCarSelect(cars) {
+      const carSelect = document.getElementById("car");
+      if (!carSelect) return;
+      const first = `<option value="Rezervim i shpejtë">Zgjedh makinën</option>`;
+      const options = cars.map(car => {
+        const name = safeText(car.name, "Vetura");
+        return `<option value="${name}">${name}</option>`;
+      }).join("");
+      carSelect.innerHTML = first + options;
+    }
+
+    async function loadCars() {
+      renderCars(defaultCars);
+
+      if (!SUPABASE_KEY || SUPABASE_KEY === "VENDOSE_PUBLISHABLE_KEY_KETU") {
+        console.log("Supabase key mungon. Po shfaqen makinat default.");
+        return;
+      }
+
+      try {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/cars?select=*&order=id.asc`, {
+          headers: {
+            apikey: SUPABASE_KEY,
+            Authorization: `Bearer ${SUPABASE_KEY}`
+          }
+        });
+
+        if (!response.ok) throw new Error("Supabase error: " + response.status);
+
+        const data = await response.json();
+        if (Array.isArray(data) && data.length > 0) {
+          renderCars(data);
+        }
+      } catch (error) {
+        console.log("Nuk u lidh Supabase, po shfaqen makinat default:", error);
+      }
+    }
+
+    loadCars();
   </script>
 </body>
 </html>
