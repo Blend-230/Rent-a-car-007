@@ -364,10 +364,8 @@
     }
 
     .car-image {
-      height: 390px;
+      height: 280px;
       background: #050505;
-      display: grid;
-      place-items: center;
       position: relative;
       overflow: hidden;
       cursor: pointer;
@@ -377,36 +375,21 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 72%;
+      object-position: center center;
       display: block;
       background: #050505;
       transition: transform .35s ease;
     }
 
-    /* Pozicionet e fotove në kartela - kerri del ma mirë, jo gjys */
-    .car-image.pos-92 img { object-position: center 82%; }
-    .car-image.pos-88 img { object-position: center 68%; }
-    .car-image.pos-84 img { object-position: center 70%; }
-    .car-image.pos-80 img { object-position: center 78%; }
-
-    .car-card:hover .car-image img { transform: scale(1.04); }
-
-    .car-image::after {
-      content: "Kliko për foto tjera";
-      position: absolute;
-      right: 14px;
-      bottom: 14px;
-      background: rgba(0,0,0,.65);
-      color: white;
-      border: 1px solid rgba(255,255,255,.18);
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 800;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: .25s;
+    .car-card:hover .car-image img {
+      transform: scale(1.03);
     }
+
+    /* Pozicionimi i fotove kryesore që kerri mos me u pre */
+    .car-image.pos-92 img { object-position: center 78%; }
+    .car-image.pos-88 img { object-position: center 76%; }
+    .car-image.pos-84 img { object-position: center 72%; }
+    .car-image.pos-80 img { object-position: center 76%; }
 
     .car-card:hover .car-image::after { opacity: 1; transform: translateY(0); }
 
@@ -709,7 +692,7 @@
 
     @media (max-width: 600px) {
       .car-image {
-        height: 340px;
+        height: 280px;
       }
 
       .modal {
@@ -769,6 +752,69 @@
         padding-right: 18px;
         padding-bottom: 12px;
       }
+    }
+
+
+
+    /* FIX PËR TELEFON: fotot dalin më mirë brenda kartelës */
+    @media (max-width: 700px) {
+      .section {
+        padding-top: 46px !important;
+      }
+
+      .cars-grid, .grid-3 {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+        width: 100% !important;
+      }
+
+      .car-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 26px !important;
+        overflow: hidden !important;
+      }
+
+      .car-image {
+        height: 255px !important;
+        border-radius: 26px 26px 0 0 !important;
+      }
+
+      .car-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+      }
+
+      .car-image.pos-92 img { object-position: center 84% !important; }
+      .car-image.pos-88 img { object-position: center 80% !important; }
+      .car-image.pos-84 img { object-position: center 76% !important; }
+      .car-image.pos-80 img { object-position: center 82% !important; }
+
+      .car-info {
+        padding: 26px 24px 30px !important;
+      }
+
+      .car-title {
+        font-size: 30px !important;
+        line-height: 1.1 !important;
+      }
+
+      .car-desc {
+        font-size: 20px !important;
+        line-height: 1.45 !important;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .car-image {
+        height: 245px !important;
+      }
+
+      .car-image.pos-92 img { object-position: center 86% !important; }
+      .car-image.pos-88 img { object-position: center 82% !important; }
+      .car-image.pos-84 img { object-position: center 78% !important; }
+      .car-image.pos-80 img { object-position: center 84% !important; }
     }
 
   </style>
@@ -1056,8 +1102,10 @@
           <option value="">Zgjedh makinën</option>
           <option>VW Golf 7 i bardhë</option>
           <option>VW Golf 7 i hirtë</option>
-          <option>VW Jetta</option>
-          <option>VW Jetta Silver</option>
+          <option>VW Passat / Jetta</option>
+          <option>VW Golf i kaltër</option>
+          <option>VW Golf i zi / hirtë</option>
+          <option>VW Sedan i argjendtë</option>
           <option>Rezervim i shpejtë</option>
         </select>
 
