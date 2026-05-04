@@ -364,7 +364,7 @@
     }
 
     .car-image {
-      height: 330px;
+      height: 390px;
       background: #050505;
       display: grid;
       place-items: center;
@@ -376,19 +376,18 @@
     .car-image img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      object-position: center center;
+      object-fit: cover;
+      object-position: center 72%;
       display: block;
       background: #050505;
       transition: transform .35s ease;
     }
 
-    .car-image.pos-92 img,
-    .car-image.pos-88 img,
-    .car-image.pos-84 img,
-    .car-image.pos-80 img {
-      object-position: center center;
-    }
+    /* Pozicionet e fotove në kartela - kerri del ma mirë, jo gjys */
+    .car-image.pos-92 img { object-position: center 82%; }
+    .car-image.pos-88 img { object-position: center 68%; }
+    .car-image.pos-84 img { object-position: center 70%; }
+    .car-image.pos-80 img { object-position: center 78%; }
 
     .car-card:hover .car-image img { transform: scale(1.04); }
 
@@ -710,7 +709,7 @@
 
     @media (max-width: 600px) {
       .car-image {
-        height: 280px;
+        height: 340px;
       }
 
       .modal {
@@ -1057,10 +1056,8 @@
           <option value="">Zgjedh makinën</option>
           <option>VW Golf 7 i bardhë</option>
           <option>VW Golf 7 i hirtë</option>
-          <option>VW Passat / Jetta</option>
-          <option>VW Golf i kaltër</option>
-          <option>VW Golf i zi / hirtë</option>
-          <option>VW Sedan i argjendtë</option>
+          <option>VW Jetta</option>
+          <option>VW Jetta Silver</option>
           <option>Rezervim i shpejtë</option>
         </select>
 
