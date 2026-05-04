@@ -364,8 +364,8 @@
     }
 
     .car-image {
-      height: 300px;
-      background: linear-gradient(135deg, #222, #111);
+      height: 330px;
+      background: #050505;
       display: grid;
       place-items: center;
       position: relative;
@@ -376,16 +376,19 @@
     .car-image img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center 86%;
+      object-fit: contain;
+      object-position: center center;
       display: block;
+      background: #050505;
       transition: transform .35s ease;
     }
 
-    .car-image.pos-92 img { object-position: center 92%; }
-    .car-image.pos-88 img { object-position: center 88%; }
-    .car-image.pos-84 img { object-position: center 84%; }
-    .car-image.pos-80 img { object-position: center 80%; }
+    .car-image.pos-92 img,
+    .car-image.pos-88 img,
+    .car-image.pos-84 img,
+    .car-image.pos-80 img {
+      object-position: center center;
+    }
 
     .car-card:hover .car-image img { transform: scale(1.04); }
 
@@ -706,6 +709,10 @@
 
 
     @media (max-width: 600px) {
+      .car-image {
+        height: 280px;
+      }
+
       .modal {
         align-items: flex-start;
         justify-content: center;
