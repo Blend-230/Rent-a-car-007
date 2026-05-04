@@ -12,7 +12,7 @@
   <meta name="robots" content="index, follow" />
 
   <!-- Kjo i tregon Google që faqja kryesore është website, jo GitHub code -->
-  <link rel="canonical" href="https://blend-230.github.io/Rent-a-car-007/" />
+  <link rel="canonical" href="https://rentacar007ks.netlify.app/" />
 
   <!-- Logo / Icon për Google dhe browser -->
   <link rel="icon" type="image/jpeg" href="007%20FOTO.jpg" />
@@ -22,8 +22,8 @@
   <!-- Kur e shpërndan linkun në Facebook / Instagram / Messenger -->
   <meta property="og:title" content="Rent A Car 007 - Fushë Kosovë" />
   <meta property="og:description" content="Qira veturash në Fushë Kosovë me shërbim profesional, çmime konkurruese dhe rezervim të shpejtë." />
-  <meta property="og:image" content="https://blend-230.github.io/Rent-a-car-007/007%20FOTO.jpg" />
-  <meta property="og:url" content="https://blend-230.github.io/Rent-a-car-007/" />
+  <meta property="og:image" content="https://rentacar007ks.netlify.app/007%20FOTO.jpg" />
+  <meta property="og:url" content="https://rentacar007ks.netlify.app/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Rent A Car 007" />
 
@@ -31,7 +31,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Rent A Car 007 - Fushë Kosovë" />
   <meta name="twitter:description" content="Qira veturash në Fushë Kosovë me rezervim online dhe kontakt direkt." />
-  <meta name="twitter:image" content="https://blend-230.github.io/Rent-a-car-007/007%20FOTO.jpg" />
+  <meta name="twitter:image" content="https://rentacar007ks.netlify.app/007%20FOTO.jpg" />
 
   <!-- Structured data për Google -->
   <script type="application/ld+json">
@@ -40,9 +40,9 @@
     "@type": "AutoRental",
     "name": "Rent A Car 007",
     "description": "Qira veturash në Fushë Kosovë me rezervim online dhe kontakt direkt.",
-    "url": "https://blend-230.github.io/Rent-a-car-007/",
-    "logo": "https://blend-230.github.io/Rent-a-car-007/007%20FOTO.jpg",
-    "image": "https://blend-230.github.io/Rent-a-car-007/007%20FOTO.jpg",
+    "url": "https://rentacar007ks.netlify.app/",
+    "logo": "https://rentacar007ks.netlify.app/007%20FOTO.jpg",
+    "image": "https://rentacar007ks.netlify.app/007%20FOTO.jpg",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Fushë Kosovë",
@@ -364,7 +364,7 @@
     }
 
     .car-image {
-      height: 300px;
+      height: 260px;
       background: linear-gradient(135deg, #222, #111);
       display: grid;
       place-items: center;
@@ -377,12 +377,18 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 78%;
+      object-position: center center;
       display: block;
       transition: transform .35s ease;
     }
 
     .car-card:hover .car-image img { transform: scale(1.04); }
+
+
+    .car-image img.photo-white { object-position: center 62%; }
+    .car-image img.photo-gray { object-position: center 58%; }
+    .car-image img.photo-jetta-day { object-position: center 55%; }
+    .car-image img.photo-jetta-silver { object-position: center 58%; }
 
     .car-image::after {
       content: "Kliko për foto tjera";
@@ -921,16 +927,21 @@
 
       <div class="grid-3">
         <div class="car-card">
-          <div class="car-image" onclick="openGallery('white', 0)"><img src="images/golf-white-6.jpg" alt="Volkswagen Golf 7 i bardhë për qira te Rent A Car 007"></div>
+          <div class="car-image" onclick="openGallery('white', 0)"><img class="photo-white" src="images/golf-white-6.jpg" alt="Volkswagen Golf 7 i bardhë për qira te Rent A Car 007"></div>
           <div class="car-info"><h3>VW Golf 7 i bardhë</h3><p>Golf 7 i bardhë, ekonomik, komod dhe shumë i përshtatshëm për qytet dhe rrugë të gjata.</p><div class="tags"><span class="tag">2014/2015</span><span class="tag">Automatik DSG</span><span class="tag">Naftë</span><span class="tag">5 ulëse</span></div><span class="price">Çmimi sipas marrëveshjes</span><br><button class="btn" onclick="openBooking('VW Golf 7 i bardhë')">Rezervo tani</button></div>
         </div>
         <div class="car-card">
-          <div class="car-image" onclick="openGallery('gray', 0)"><img src="images/golf-gray-1.jpg" alt="Volkswagen Golf 7 i hirtë për qira te Rent A Car 007"></div>
+          <div class="car-image" onclick="openGallery('gray', 0)"><img class="photo-gray" src="images/golf-gray-1.jpg" alt="Volkswagen Golf 7 i hirtë për qira te Rent A Car 007"></div>
           <div class="car-info"><h3>VW Golf 7 i hirtë</h3><p>Makina praktike për udhëtime ditore dhe përdorim familjar.</p><div class="tags"><span class="tag">2014/2015</span><span class="tag">Automatik DSG</span><span class="tag">Naftë</span><span class="tag">5 ulëse</span></div><span class="price">Çmimi sipas marrëveshjes</span><br><button class="btn" onclick="openBooking('VW Golf 7 i hirtë')">Rezervo tani</button></div>
         </div>
         <div class="car-card">
-          <div class="car-image" onclick="openGallery('jettaDay', 0)"><img src="images/jetta-day-1.jpg" alt="Volkswagen Jetta për qira te Rent A Car 007"></div>
-          <div class="car-info"><h3>VW Passat / Jetta</h3><p>Sedan me hapësirë, stil dhe rehati për rrugë më të gjata.</p><div class="tags"><span class="tag">2015</span><span class="tag">Automatik</span><span class="tag">Naftë</span><span class="tag">5 ulëse</span></div><span class="price">Çmimi sipas marrëveshjes</span><br><button class="btn" onclick="openBooking('VW Passat / Jetta')">Rezervo tani</button></div>
+          <div class="car-image" onclick="openGallery('jettaDay', 0)"><img class="photo-jetta-day" src="images/jetta-day-1.jpg" alt="Volkswagen Jetta për qira te Rent A Car 007"></div>
+          <div class="car-info"><h3>VW Jetta</h3><p>Sedan me hapësirë, stil dhe rehati për rrugë më të gjata.</p><div class="tags"><span class="tag">2015</span><span class="tag">Automatik</span><span class="tag">Naftë</span><span class="tag">5 ulëse</span></div><span class="price">Çmimi sipas marrëveshjes</span><br><button class="btn" onclick="openBooking('VW Jetta')">Rezervo tani</button></div>
+        </div>
+
+        <div class="car-card">
+          <div class="car-image" onclick="openGallery('jettaSilver', 0)"><img class="photo-jetta-silver" src="images/jetta-silver-8.jpg" alt="Volkswagen Jetta Silver për qira te Rent A Car 007"></div>
+          <div class="car-info"><h3>VW Jetta Silver</h3><p>Jetta Silver me pamje elegante, komoditet dhe stil për udhëtime ditore ose më të gjata.</p><div class="tags"><span class="tag">2015</span><span class="tag">Automatik</span><span class="tag">Naftë</span><span class="tag">5 ulëse</span></div><span class="price">Çmimi sipas marrëveshjes</span><br><button class="btn" onclick="openBooking('VW Jetta Silver')">Rezervo tani</button></div>
         </div>
       </div>
     </div>
@@ -1041,7 +1052,8 @@
           <option value="">Zgjedh makinën</option>
           <option>VW Golf 7 i bardhë</option>
           <option>VW Golf 7 i hirtë</option>
-          <option>VW Passat / Jetta</option>
+          <option>VW Jetta</option>
+          <option>VW Jetta Silver</option>
           <option>VW Golf i kaltër</option>
           <option>VW Golf i zi / hirtë</option>
           <option>VW Sedan i argjendtë</option>
@@ -1194,7 +1206,7 @@
     const carGalleries = {
       white: { title: 'VW Golf 7 i bardhë', photos: ['images/golf-white-6.jpg','images/golf-white-3.jpg','images/golf-white-7.jpg','images/golf-white-1.jpg','images/golf-white-2.jpg','images/golf-white-4.jpg','images/golf-white-5.jpg','images/golf-white-8.jpg','images/golf-white-9.jpg'] },
       gray: { title: 'VW Golf 7 i hirtë', photos: ['images/golf-gray-1.jpg','images/golf-gray-2.jpg','images/golf-gray-3.jpg'] },
-      jettaDay: { title: 'VW Passat / Jetta', photos: ['images/jetta-day-1.jpg','images/jetta-day-2.jpg','images/jetta-day-3.jpg'] },
+      jettaDay: { title: 'VW Jetta', photos: ['images/jetta-day-1.jpg','images/jetta-day-2.jpg','images/jetta-day-3.jpg'] },
       jettaSilver: { title: 'VW Jetta argjendtë', photos: ['images/jetta-silver-8.jpg','images/jetta-silver-1.jpg','images/jetta-silver-3.jpg','images/jetta-silver-7.jpg','images/jetta-silver-10.jpg','images/jetta-silver-2.jpg','images/jetta-silver-4.jpg','images/jetta-silver-5.jpg','images/jetta-silver-6.jpg','images/jetta-silver-9.jpg'] }
     };
     let currentGalleryKey = 'white';
