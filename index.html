@@ -364,8 +364,10 @@
     }
 
     .car-image {
-      height: 280px;
+      height: 330px;
       background: #050505;
+      display: grid;
+      place-items: center;
       position: relative;
       overflow: hidden;
       cursor: pointer;
@@ -374,22 +376,38 @@
     .car-image img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center center;
       display: block;
       background: #050505;
       transition: transform .35s ease;
     }
 
-    .car-card:hover .car-image img {
-      transform: scale(1.03);
+    .car-image.pos-92 img,
+    .car-image.pos-88 img,
+    .car-image.pos-84 img,
+    .car-image.pos-80 img {
+      object-position: center center;
     }
 
-    /* Pozicionimi i fotove kryesore që kerri mos me u pre */
-    .car-image.pos-92 img { object-position: center 78%; }
-    .car-image.pos-88 img { object-position: center 76%; }
-    .car-image.pos-84 img { object-position: center 72%; }
-    .car-image.pos-80 img { object-position: center 76%; }
+    .car-card:hover .car-image img { transform: scale(1.04); }
+
+    .car-image::after {
+      content: "Kliko për foto tjera";
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      background: rgba(0,0,0,.65);
+      color: white;
+      border: 1px solid rgba(255,255,255,.18);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: .25s;
+    }
 
     .car-card:hover .car-image::after { opacity: 1; transform: translateY(0); }
 
@@ -756,65 +774,202 @@
 
 
 
-    /* FIX PËR TELEFON: fotot dalin më mirë brenda kartelës */
-    @media (max-width: 700px) {
-      .section {
-        padding-top: 46px !important;
+    /* ===== RESPONSIVE FIX FINAL - Rent A Car 007 ===== */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .car-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .car-image {
+      height: clamp(240px, 24vw, 330px);
+      aspect-ratio: 16 / 10;
+      background: #070707;
+    }
+
+    .car-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center bottom;
+    }
+
+    .car-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .car-info .btn {
+      width: fit-content;
+      margin-top: 10px;
+    }
+
+    .price {
+      width: fit-content;
+      max-width: 100%;
+      white-space: normal;
+      text-align: center;
+    }
+
+    @media (max-width: 1100px) {
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 62px 0;
       }
 
-      .cars-grid, .grid-3 {
-        grid-template-columns: 1fr !important;
-        gap: 28px !important;
-        width: 100% !important;
+      .container {
+        width: min(100% - 28px, 1200px);
+      }
+
+      nav {
+        gap: 18px;
+        padding: 18px 0;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .title {
+        margin-bottom: 32px;
+      }
+
+      .title h2 {
+        font-size: clamp(34px, 10vw, 54px);
+        line-height: 1.02;
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+        gap: 26px;
       }
 
       .car-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        border-radius: 26px !important;
-        overflow: hidden !important;
+        border-radius: 28px;
+        max-width: 560px;
+        width: 100%;
+        margin-inline: auto;
       }
 
       .car-image {
-        height: 255px !important;
-        border-radius: 26px 26px 0 0 !important;
+        height: 255px;
+        aspect-ratio: 4 / 3;
       }
 
       .car-image img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
+        object-fit: cover;
+        object-position: center bottom;
       }
-
-      .car-image.pos-92 img { object-position: center 84% !important; }
-      .car-image.pos-88 img { object-position: center 80% !important; }
-      .car-image.pos-84 img { object-position: center 76% !important; }
-      .car-image.pos-80 img { object-position: center 82% !important; }
 
       .car-info {
-        padding: 26px 24px 30px !important;
+        padding: 22px;
       }
 
-      .car-title {
-        font-size: 30px !important;
-        line-height: 1.1 !important;
+      .car-info h3 {
+        font-size: 26px;
+        line-height: 1.15;
       }
 
-      .car-desc {
-        font-size: 20px !important;
-        line-height: 1.45 !important;
+      .car-info p {
+        font-size: 17px;
+        line-height: 1.55;
+      }
+
+      .tags {
+        gap: 8px;
+      }
+
+      .tag {
+        font-size: 13px;
+        padding: 9px 12px;
+      }
+
+      .price {
+        font-size: 17px;
+        padding: 13px 18px;
       }
     }
 
     @media (max-width: 430px) {
-      .car-image {
-        height: 245px !important;
+      .container {
+        width: min(100% - 18px, 1200px);
       }
 
-      .car-image.pos-92 img { object-position: center 86% !important; }
-      .car-image.pos-88 img { object-position: center 82% !important; }
-      .car-image.pos-84 img { object-position: center 78% !important; }
-      .car-image.pos-80 img { object-position: center 84% !important; }
+      .title h2 {
+        font-size: 38px;
+      }
+
+      .car-card {
+        border-radius: 24px;
+      }
+
+      .car-image {
+        height: 230px;
+      }
+
+      .car-info {
+        padding: 20px 18px 22px;
+      }
+
+      .car-info h3 {
+        font-size: 24px;
+      }
+
+      .car-info p {
+        font-size: 16px;
+      }
+
+      .tag {
+        font-size: 12px;
+        padding: 8px 10px;
+      }
+
+      .price {
+        width: 100%;
+        font-size: 16px;
+        padding: 13px 14px;
+      }
+
+      .car-info .btn {
+        width: 58%;
+        min-width: 170px;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .car-image::after {
+        opacity: 1;
+        transform: none;
+        right: 12px;
+        bottom: 12px;
+        font-size: 11px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .car-image {
+        height: 210px;
+      }
+
+      .title h2 {
+        font-size: 33px;
+      }
     }
 
   </style>
