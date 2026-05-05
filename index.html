@@ -12,7 +12,7 @@
   <meta name="robots" content="index, follow" />
 
   <!-- Kjo i tregon Google që faqja kryesore është website, jo GitHub code -->
-  <link rel="canonical" href="https://blend-230.github.io/Rent-a-car-007/" />
+  <link rel="canonical" href="https://rentacar007ks.netlify.app/" />
 
   <!-- Logo / Icon për Google dhe browser -->
   <link rel="icon" type="image/jpeg" href="007%20FOTO.jpg" />
@@ -22,8 +22,8 @@
   <!-- Kur e shpërndan linkun në Facebook / Instagram / Messenger -->
   <meta property="og:title" content="Rent A Car 007 - Fushë Kosovë" />
   <meta property="og:description" content="Qira veturash në Fushë Kosovë me shërbim profesional, çmime konkurruese dhe rezervim të shpejtë." />
-  <meta property="og:image" content="https://blend-230.github.io/Rent-a-car-007/007%20FOTO.jpg" />
-  <meta property="og:url" content="https://blend-230.github.io/Rent-a-car-007/" />
+  <meta property="og:image" content="https://rentacar007ks.netlify.app/007%20FOTO.jpg" />
+  <meta property="og:url" content="https://rentacar007ks.netlify.app/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Rent A Car 007" />
 
@@ -31,7 +31,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Rent A Car 007 - Fushë Kosovë" />
   <meta name="twitter:description" content="Qira veturash në Fushë Kosovë me rezervim online dhe kontakt direkt." />
-  <meta name="twitter:image" content="https://blend-230.github.io/Rent-a-car-007/007%20FOTO.jpg" />
+  <meta name="twitter:image" content="https://rentacar007ks.netlify.app/007%20FOTO.jpg" />
 
   <!-- Structured data për Google -->
   <script type="application/ld+json">
@@ -40,9 +40,9 @@
     "@type": "AutoRental",
     "name": "Rent A Car 007",
     "description": "Qira veturash në Fushë Kosovë me rezervim online dhe kontakt direkt.",
-    "url": "https://blend-230.github.io/Rent-a-car-007/",
-    "logo": "https://blend-230.github.io/Rent-a-car-007/007%20FOTO.jpg",
-    "image": "https://blend-230.github.io/Rent-a-car-007/007%20FOTO.jpg",
+    "url": "https://rentacar007ks.netlify.app/",
+    "logo": "https://rentacar007ks.netlify.app/007%20FOTO.jpg",
+    "image": "https://rentacar007ks.netlify.app/007%20FOTO.jpg",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Fushë Kosovë",
@@ -774,31 +774,60 @@
 
 
 
-    /* ===== RESPONSIVE FIX FINAL - Rent A Car 007 ===== */
+    /* ===== FINAL RESPONSIVE FIX - Rent A Car 007 ===== */
+    /* Maksimumi 3 kerre në një rresht, fotot përshtaten brenda kutisë pa u pre */
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 28px;
+      gap: 26px;
       align-items: stretch;
+    }
+
+    .cars .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .car-card {
       display: flex;
       flex-direction: column;
       height: 100%;
+      overflow: hidden;
     }
 
     .car-image {
-      height: clamp(240px, 24vw, 330px);
-      aspect-ratio: 16 / 10;
-      background: #070707;
+      width: 100%;
+      height: auto !important;
+      aspect-ratio: 4 / 3 !important;
+      background: #050505;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+      padding: 10px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
     }
 
     .car-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center bottom;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain !important;
+      object-position: center center !important;
+      display: block;
+      background: #050505;
+      transform: none !important;
+      transition: transform .35s ease;
+    }
+
+    .car-card:hover .car-image img {
+      transform: scale(1.02) !important;
+    }
+
+    .car-image.pos-92 img,
+    .car-image.pos-88 img,
+    .car-image.pos-84 img,
+    .car-image.pos-80 img {
+      object-position: center center !important;
     }
 
     .car-info {
@@ -806,22 +835,38 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
+      padding: 24px 22px 28px;
     }
 
-    .car-info .btn {
-      width: fit-content;
-      margin-top: 10px;
+    .car-info h3 {
+      font-size: clamp(23px, 2vw, 29px);
+      line-height: 1.15;
+    }
+
+    .car-info p {
+      font-size: clamp(15px, 1.05vw, 17px);
+      line-height: 1.55;
     }
 
     .price {
+      display: inline-flex;
       width: fit-content;
       max-width: 100%;
       white-space: normal;
       text-align: center;
     }
 
+    .car-info .btn {
+      width: fit-content;
+      min-width: 170px;
+      margin-top: 10px;
+      text-align: center;
+      justify-content: center;
+    }
+
     @media (max-width: 1100px) {
-      .grid-3 {
+      .grid-3,
+      .cars .grid-3 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
@@ -855,8 +900,10 @@
         line-height: 1.02;
       }
 
-      .grid-3 {
-        grid-template-columns: 1fr;
+      .grid-3,
+      .cars .grid-3,
+      .contact-box {
+        grid-template-columns: 1fr !important;
         gap: 26px;
       }
 
@@ -868,13 +915,8 @@
       }
 
       .car-image {
-        height: 255px;
-        aspect-ratio: 4 / 3;
-      }
-
-      .car-image img {
-        object-fit: cover;
-        object-position: center bottom;
+        aspect-ratio: 4 / 3 !important;
+        padding: 8px;
       }
 
       .car-info {
@@ -883,16 +925,10 @@
 
       .car-info h3 {
         font-size: 26px;
-        line-height: 1.15;
       }
 
       .car-info p {
-        font-size: 17px;
-        line-height: 1.55;
-      }
-
-      .tags {
-        gap: 8px;
+        font-size: 16px;
       }
 
       .tag {
@@ -903,6 +939,19 @@
       .price {
         font-size: 17px;
         padding: 13px 18px;
+      }
+
+      .car-info .btn {
+        width: 100%;
+        min-width: auto;
+      }
+
+      .car-image::after {
+        opacity: 1;
+        transform: none;
+        right: 12px;
+        bottom: 12px;
+        font-size: 11px;
       }
     }
 
@@ -920,7 +969,8 @@
       }
 
       .car-image {
-        height: 230px;
+        aspect-ratio: 4 / 3 !important;
+        padding: 6px;
       }
 
       .car-info {
@@ -928,11 +978,11 @@
       }
 
       .car-info h3 {
-        font-size: 24px;
+        font-size: 23px;
       }
 
       .car-info p {
-        font-size: 16px;
+        font-size: 15px;
       }
 
       .tag {
@@ -945,191 +995,17 @@
         font-size: 16px;
         padding: 13px 14px;
       }
-
-      .car-info .btn {
-        width: 58%;
-        min-width: 170px;
-        text-align: center;
-        justify-content: center;
-      }
-
-      .car-image::after {
-        opacity: 1;
-        transform: none;
-        right: 12px;
-        bottom: 12px;
-        font-size: 11px;
-      }
     }
 
     @media (max-width: 360px) {
-      .car-image {
-        height: 210px;
-      }
-
       .title h2 {
         font-size: 33px;
       }
+
+      .car-info h3 {
+        font-size: 21px;
+      }
     }
-
-  
-/* ===== FINAL FIX: responsive car cards + photos fitted inside the box ===== */
-.cars .grid-3{
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 26px;
-  align-items: stretch;
-}
-
-.cars .car-card{
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.car-image{
-  width: 100%;
-  height: clamp(220px, 19vw, 300px) !important;
-  aspect-ratio: auto !important;
-  overflow: hidden;
-  border-radius: inherit;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  background: #080808;
-}
-
-.car-image img{
-  width: 100% !important;
-  height: 100% !important;
-  display: block;
-  object-fit: cover !important;
-  transform: none !important;
-}
-
-/* Pozicionet e fotove kryesore, që kerri të duket më mirë brenda katrorit */
-.car-image.pos-92 img{ object-position: center 78% !important; }   /* Golf i bardhë */
-.car-image.pos-88 img{ object-position: center 62% !important; }   /* Golf i hirtë */
-.car-image.pos-84 img{ object-position: center 60% !important; }   /* Jetta */
-.car-image.pos-80 img{ object-position: center 76% !important; }   /* Jetta Silver */
-
-.cars .car-info{
-  padding: 24px 22px 28px;
-}
-
-.cars .car-info h3{
-  font-size: clamp(24px, 2vw, 30px);
-  line-height: 1.15;
-}
-
-.cars .car-info p{
-  font-size: clamp(15px, 1.05vw, 18px);
-  line-height: 1.55;
-}
-
-.cars .price{
-  display: inline-flex;
-  width: auto;
-  max-width: 100%;
-  white-space: normal;
-  text-align: center;
-}
-
-/* Tablet */
-@media (max-width: 1150px){
-  .cars .grid-3{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .car-image{
-    height: clamp(240px, 32vw, 340px) !important;
-  }
-}
-
-/* Telefon */
-@media (max-width: 700px){
-  .cars .container{
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .cars .title{
-    margin-bottom: 26px;
-  }
-
-  .cars .title h2{
-    font-size: clamp(36px, 10vw, 48px);
-    line-height: 1.05;
-  }
-
-  .cars .grid-3{
-    grid-template-columns: 1fr !important;
-    gap: 28px;
-  }
-
-  .cars .car-card{
-    max-width: 100%;
-    border-radius: 26px;
-  }
-
-  .car-image{
-    height: clamp(240px, 58vw, 320px) !important;
-  }
-
-  .car-image.pos-92 img{ object-position: center 82% !important; }
-  .car-image.pos-88 img{ object-position: center 62% !important; }
-  .car-image.pos-84 img{ object-position: center 60% !important; }
-  .car-image.pos-80 img{ object-position: center 82% !important; }
-
-  .cars .car-info{
-    padding: 24px 22px 30px;
-  }
-
-  .cars .car-info h3{
-    font-size: 30px;
-  }
-
-  .cars .car-info p{
-    font-size: 20px;
-  }
-
-  .cars .tags{
-    gap: 10px;
-  }
-
-  .cars .tag{
-    font-size: 16px;
-    padding: 9px 13px;
-  }
-
-  .cars .price{
-    font-size: 19px;
-    padding: 14px 18px;
-    border-radius: 999px;
-  }
-
-  .cars .car-info .btn{
-    width: auto;
-    min-width: 170px;
-  }
-}
-
-/* Telefon shumë i ngushtë */
-@media (max-width: 380px){
-  .car-image{
-    height: 230px !important;
-  }
-
-  .cars .car-info h3{
-    font-size: 27px;
-  }
-
-  .cars .car-info p{
-    font-size: 18px;
-  }
-
-  .cars .price{
-    font-size: 17px;
-  }
-}
 
   </style>
 </head>
@@ -1416,10 +1292,8 @@
           <option value="">Zgjedh makinën</option>
           <option>VW Golf 7 i bardhë</option>
           <option>VW Golf 7 i hirtë</option>
-          <option>VW Passat / Jetta</option>
-          <option>VW Golf i kaltër</option>
-          <option>VW Golf i zi / hirtë</option>
-          <option>VW Sedan i argjendtë</option>
+          <option>VW Jetta</option>
+          <option>VW Jetta Silver</option>
           <option>Rezervim i shpejtë</option>
         </select>
 
