@@ -12,7 +12,7 @@
   <meta name="robots" content="index, follow" />
 
   <!-- Kjo i tregon Google që faqja kryesore është website, jo GitHub code -->
-  <link rel="canonical" href="https://blend-230.github.io/Rent-a-car-007/" />
+  <link rel="canonical" href="https://rentacar007ks.netlify.app/" />
 
   <!-- Logo / Icon për Google dhe browser -->
   <link rel="icon" type="image/jpeg" href="007%20FOTO.jpg" />
@@ -22,8 +22,8 @@
   <!-- Kur e shpërndan linkun në Facebook / Instagram / Messenger -->
   <meta property="og:title" content="Rent A Car 007 - Fushë Kosovë" />
   <meta property="og:description" content="Qira veturash në Fushë Kosovë me shërbim profesional, çmime konkurruese dhe rezervim të shpejtë." />
-  <meta property="og:image" content="https://blend-230.github.io/Rent-a-car-007/007%20FOTO.jpg" />
-  <meta property="og:url" content="https://blend-230.github.io/Rent-a-car-007/" />
+  <meta property="og:image" content="https://rentacar007ks.netlify.app/007%20FOTO.jpg" />
+  <meta property="og:url" content="https://rentacar007ks.netlify.app/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Rent A Car 007" />
 
@@ -31,7 +31,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Rent A Car 007 - Fushë Kosovë" />
   <meta name="twitter:description" content="Qira veturash në Fushë Kosovë me rezervim online dhe kontakt direkt." />
-  <meta name="twitter:image" content="https://blend-230.github.io/Rent-a-car-007/007%20FOTO.jpg" />
+  <meta name="twitter:image" content="https://rentacar007ks.netlify.app/007%20FOTO.jpg" />
 
   <!-- Structured data për Google -->
   <script type="application/ld+json">
@@ -40,11 +40,13 @@
     "@type": "AutoRental",
     "name": "Rent A Car 007",
     "description": "Qira veturash në Fushë Kosovë me rezervim online dhe kontakt direkt.",
-    "url": "https://blend-230.github.io/Rent-a-car-007/",
-    "logo": "https://blend-230.github.io/Rent-a-car-007/007%20FOTO.jpg",
-    "image": "https://blend-230.github.io/Rent-a-car-007/007%20FOTO.jpg",
+    "url": "https://rentacar007ks.netlify.app/",
+    "logo": "https://rentacar007ks.netlify.app/007%20FOTO.jpg",
+    "image": "https://rentacar007ks.netlify.app/007%20FOTO.jpg",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "Uglare 4",
+      "postalCode": "12000",
       "addressLocality": "Fushë Kosovë",
       "addressCountry": "XK"
     },
@@ -618,6 +620,27 @@
       font-size: 13px;
       margin: -4px 0 14px;
       line-height: 1.5;
+    }
+
+
+    .location-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .location-link:hover {
+      color: #ff7777;
+    }
+
+    .map-btn {
+      margin-top: 10px;
+      padding: 10px 14px;
+      font-size: 13px;
+      box-shadow: none;
     }
 
     footer {
@@ -1514,7 +1537,15 @@
 
           <div class="contact-row">
             <span>📍</span>
-            <div>Fushë Kosovë, Kosovo</div>
+            <div>
+              <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=Uglare%204%2C%20Fush%C3%AB-Kosov%C3%AB%2012000" target="_blank" rel="noopener">
+                Uglare 4, Fushë-Kosovë 12000
+              </a>
+              <br>
+              <a class="btn btn-dark map-btn" href="https://www.google.com/maps/search/?api=1&query=Uglare%204%2C%20Fush%C3%AB-Kosov%C3%AB%2012000" target="_blank" rel="noopener">
+                🗺️ Hape lokacionin
+              </a>
+            </div>
           </div>
 
           <div class="contact-row">
