@@ -972,6 +972,165 @@
       }
     }
 
+  
+/* ===== FINAL FIX: responsive car cards + photos fitted inside the box ===== */
+.cars .grid-3{
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 26px;
+  align-items: stretch;
+}
+
+.cars .car-card{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.car-image{
+  width: 100%;
+  height: clamp(220px, 19vw, 300px) !important;
+  aspect-ratio: auto !important;
+  overflow: hidden;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background: #080808;
+}
+
+.car-image img{
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  object-fit: cover !important;
+  transform: none !important;
+}
+
+/* Pozicionet e fotove kryesore, që kerri të duket më mirë brenda katrorit */
+.car-image.pos-92 img{ object-position: center 78% !important; }   /* Golf i bardhë */
+.car-image.pos-88 img{ object-position: center 62% !important; }   /* Golf i hirtë */
+.car-image.pos-84 img{ object-position: center 60% !important; }   /* Jetta */
+.car-image.pos-80 img{ object-position: center 76% !important; }   /* Jetta Silver */
+
+.cars .car-info{
+  padding: 24px 22px 28px;
+}
+
+.cars .car-info h3{
+  font-size: clamp(24px, 2vw, 30px);
+  line-height: 1.15;
+}
+
+.cars .car-info p{
+  font-size: clamp(15px, 1.05vw, 18px);
+  line-height: 1.55;
+}
+
+.cars .price{
+  display: inline-flex;
+  width: auto;
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+}
+
+/* Tablet */
+@media (max-width: 1150px){
+  .cars .grid-3{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .car-image{
+    height: clamp(240px, 32vw, 340px) !important;
+  }
+}
+
+/* Telefon */
+@media (max-width: 700px){
+  .cars .container{
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .cars .title{
+    margin-bottom: 26px;
+  }
+
+  .cars .title h2{
+    font-size: clamp(36px, 10vw, 48px);
+    line-height: 1.05;
+  }
+
+  .cars .grid-3{
+    grid-template-columns: 1fr !important;
+    gap: 28px;
+  }
+
+  .cars .car-card{
+    max-width: 100%;
+    border-radius: 26px;
+  }
+
+  .car-image{
+    height: clamp(240px, 58vw, 320px) !important;
+  }
+
+  .car-image.pos-92 img{ object-position: center 82% !important; }
+  .car-image.pos-88 img{ object-position: center 62% !important; }
+  .car-image.pos-84 img{ object-position: center 60% !important; }
+  .car-image.pos-80 img{ object-position: center 82% !important; }
+
+  .cars .car-info{
+    padding: 24px 22px 30px;
+  }
+
+  .cars .car-info h3{
+    font-size: 30px;
+  }
+
+  .cars .car-info p{
+    font-size: 20px;
+  }
+
+  .cars .tags{
+    gap: 10px;
+  }
+
+  .cars .tag{
+    font-size: 16px;
+    padding: 9px 13px;
+  }
+
+  .cars .price{
+    font-size: 19px;
+    padding: 14px 18px;
+    border-radius: 999px;
+  }
+
+  .cars .car-info .btn{
+    width: auto;
+    min-width: 170px;
+  }
+}
+
+/* Telefon shumë i ngushtë */
+@media (max-width: 380px){
+  .car-image{
+    height: 230px !important;
+  }
+
+  .cars .car-info h3{
+    font-size: 27px;
+  }
+
+  .cars .car-info p{
+    font-size: 18px;
+  }
+
+  .cars .price{
+    font-size: 17px;
+  }
+}
+
   </style>
 </head>
 
