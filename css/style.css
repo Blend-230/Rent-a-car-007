@@ -134,3 +134,5 @@
   .header-inner .brand-logo img{width:64px!important;height:64px!important}
   .mobile-menu-top .brand-logo img{width:74px!important;height:74px!important}
 }
+
+.vehicle-image-wrap::after{content:"PAMJA PËRPARA";position:absolute;left:12px;bottom:12px;background:rgba(237,23,76,.92);color:#fff;border-radius:3px;padding:5px 8px;font-size:8px;font-weight:600;letter-spacing:.08em}.photo-count{z-index:2}
